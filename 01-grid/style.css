@@ -58,7 +58,7 @@ main {
 aside {
 	color: var(--color-white);
 	background-color: var(--color-black);
-  display: none;
+  /* display: none; */
 
 	grid-area: aside;
 }
