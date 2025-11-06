@@ -3,24 +3,19 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Quintessential&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Quintessential&display=swap');
 
 :root {
-	--color-primary: #0d4663;
-	--color-secondary: #135492;
-	--color-accent: #ff9a88;
+	--font-sans: "Crimson Text", serif;
 
-	--color-black: #111;
-	--color-white: #f5f5f5;
-
-	--font-sans: "Quintessential";
-
-	--nav-height: 64px;
+	--bg-color: #07060B;
+	--text-bg: #3B515E;
+	--color: #EBE2DB;
 }
 
 body {
-	font-family: Quintessential;
-	background-color: #370E06;
+	font-family: var(--font-sans);
+	background-color: var(--bg-color);
 	min-height: 100dvh;
 
 	display: flex;
@@ -35,8 +30,13 @@ body {
   align-items: center	;
 	justify-content: center;
 	flex-wrap: wrap;
+	
+			/* กรอบขาวเพิ่มสี */
+	background-color: rgba(255, 255, 255, 0.05); 
+	border-radius: 80px;
+	padding: 65px;
   gap: 60px;
-	width: 1500px;
+	/* width: 1500px; */
 }
 
 .box {
@@ -44,7 +44,7 @@ body {
 	display: flex;
 	flex-direction: column;
 
-	/* ทำให้ข้อความลอย? ไม่ work5555*/
+	/* ทำให้ข้อความลอย? ไม่work5555*/
 	/* position: absolute;
 	top: 50%;
   left: auto;
@@ -61,26 +61,30 @@ body {
 }
 
 .label {
-  background: #d8d2cf;
+  background: var(--text-bg);
+	color: var(--color);
   padding: 15px 20px;
 	border-radius: 15px 15px 0 0;
   cursor: pointer;
-	font-weight: 900;
+	font-weight: 600;
+	font-size: 2rem;
 	position: relative;
 
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	align-content: center;
+	text-align: center;
 }
 
 .info {
   max-height:0;
   overflow:hidden;
-  background:#d8d2cf;
+  background-color: var(--text-bg);
   padding:0 20px;
-  color:#370E06;
+  color: var(--color);
 	font-size: 1rem;
-	font-weight: 600;
+	/* font-weight: 600; */
 }
 
 /* เลือกกล่องไหน info จะขยาย */
@@ -94,6 +98,8 @@ input[type="radio"]:checked + .label + .info {
   width: 1009px;
   height:540px;
   border-radius:20px;
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6703aada-2649-4453-b1cb-c1dade721c88/dg29l08-f4990e62-db64-48bc-8f95-c04904809ce0.png/v1/fill/w_1600,h_900,q_80,strp/hogwarts_legacy___ever_edition_4k_wallpaper_by_aksensei_dg29l08-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTAwIiwicGF0aCI6Ii9mLzY3MDNhYWRhLTI2NDktNDQ1My1iMWNiLWMxZGFkZTcyMWM4OC9kZzI5bDA4LWY0OTkwZTYyLWRiNjQtNDhiYy04Zjk1LWMwNDkwNDgwOWNlMC5wbmciLCJ3aWR0aCI6Ijw9MTYwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.g6UePc86sz7GJufYZ5em7IoPp3L2Cshzhf42_Qep5EA");
+    background-position: center;
 }
 
 .image img{
@@ -106,11 +112,66 @@ input[type="radio"]:checked + .label + .info {
   opacity:0;
 }
 
+.default-img {
+	position:flex;
+  width: 1009px;
+  height:540px;
+  border-radius:20px;
+	z-index: 2;
+}
+
 .container:has(#gryffindor:checked) .img1 { opacity: 1; }
+.container:has(#gryffindor:checked) .default-img { opacity: 0; }
 .container:has(#ravenclaw:checked) .img2 { opacity: 1; }
+.container:has(#ravenclaw:checked) .default-img { opacity: 0; }
 .container:has(#hufflepuff:checked) .img3 { opacity: 1; }
+.container:has(#hufflepuff:checked) .default-img { opacity: 0; }
 .container:has(#slytherin:checked) .img4 { opacity: 1; }
+.container:has(#slytherin:checked) .default-img { opacity: 0; }
+
+body:has(#gryffindor:checked) { 
+	--bg-color: #290A08;
+	--text-bg: #461F1F;
+	--color: #ffffff;
+}
+
+body:has(#ravenclaw:checked) { 
+	--bg-color: #00041C;
+	--text-bg: #455180;
+	--color: #ffffff;
+}
+
+body:has(#hufflepuff:checked) { 
+	--bg-color: #1D1400;
+	--text-bg: #694227;
+	--color: #ffffff;
+}
+
+body:has(#slytherin:checked) { 
+	--bg-color: #0D1110;
+	--text-bg: #35513C;
+	--color: #ffffff;
+}
 
 .image img {
 	z-index: 2;
+}
+
+/* จัดหน้าโทรศัพ */
+@media (max-width: 1500px) {
+
+  .label {
+    font-size: 1.3rem;
+  }
+
+  .info {
+    font-size: 0.9rem;
+  }
+
+  .image {
+    width: 300px;
+    height: 160px; 
+		object-fit: cover;
+  }
+
 }
